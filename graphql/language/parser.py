@@ -421,6 +421,9 @@ def parse_value_literal(parser, is_const):
         if token.value != 'null':
             advance(parser)
             return ast.EnumValue(value=token.value, loc=loc(parser, token.start))
+        else:
+            advance(parser)
+            return None
 
     elif token.kind == TokenKind.DOLLAR:
         if not is_const:
